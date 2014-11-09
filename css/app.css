@@ -6,17 +6,16 @@
   border: 1px solid;
 }
 
-.jumbo {
-  color: red;
+.footer {
+  padding: 10px;
 }
+
+/*TEST CSS*/
 
 .side {
   height: 500px;
 }
 
-.full_menu{
+.front_menu{
   height: 300px;
-}
-.footer {
-  padding: 10px;
 }
