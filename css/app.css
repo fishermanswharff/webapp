@@ -3,9 +3,20 @@
 }
 
 .wire {
-  border: 2px solid;
+  border: 1px solid;
 }
 
 .jumbo {
   color: red;
+}
+
+.side {
+  height: 500px;
+}
+
+.full_menu{
+  height: 300px;
+}
+.footer {
+  padding: 10px;
 }
