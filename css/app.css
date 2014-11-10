@@ -1,0 +1,25 @@
+.body {
+  padding-top: 50px;
+}
+
+.wire {
+  border: 1px solid;
+}
+
+.footer {
+  padding: 10px;
+}
+
+.image {
+  height: 100px;
+}
+
+/*TEST CSS*/
+
+.side {
+  height: 500px;
+}
+
+.front_menu{
+  height: 300px;
+}
