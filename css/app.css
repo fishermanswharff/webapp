@@ -53,6 +53,31 @@
   line-height:0;
 }
 
+.btn-danger {
+  border-radius: 0;
+}
+
+
+/* Category menu buttons */
+
+.btn.btn-danger.category {
+  padding: 30px;
+  border-radius: 0;
+  margin: 10px;
+  width: 150px;
+/*  background-color: #E1674D;*/
+}
+
+.btn.btn-danger.category a{
+  color: white;
+  text-decoration: none;
+}
+
+
+.submenu {
+  margin-top: 30px;
+}
+
 
 
 
