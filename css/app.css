@@ -25,6 +25,21 @@
 }
 
 
+/* JUMBOTRON */
+.jumbo {
+  height: 200px;
+/*  background-image: url("http://foodartist.files.wordpress.com/2010/05/6-a-portfolio-bagels2.jpg");*/
+  font-family: 'Pacifico', cursive;
+}
+
+.jumbo h1{
+  font-size: 70px;
+  padding-left: 8%;
+  padding-top: 2.5%;
+}
+
+
+
 /* MENU IMAGES */
 
 .menu_item {
