@@ -8,7 +8,7 @@ menu.load_menu = function(data) {
       var item = 0;
       data.forEach(function(data) {
         item = item + 1;
-        $('#Front_menu').append($('<div class="wire item id="menu_item_' + item + '">').text(data.title).text(data.description));
+        $('#Front_menu').append($('<div class="wire item id="menu_item_' + item + '">').text(data.title + " - " + data.description + " - $" + data.price));
         $('#Front_menu').append($('<img src=' + data.image_url + ' class="image">'));
 
       });
