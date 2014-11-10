@@ -28,6 +28,7 @@
 
 .nav {
   padding-left: 38%;
+  font-size: 140%;
 }
 
 
@@ -35,16 +36,16 @@
 
 /* JUMBOTRON */
 .jumbo {
-  height: 200px;
-/*  background-image: url("http://foodartist.files.wordpress.com/2010/05/6-a-portfolio-bagels2.jpg");*/
+  height: 160px;
+  background-image: url("http://www.eggnerd.com/wp-content/uploads/2013/09/beez10.jpg");
   font-family: 'Pacifico', cursive;
-  background-color: #EBDCC4;
+/*  background-color: #EBDCC4;*/
 }
 
 .jumbo h1{
   font-size: 70px;
   padding-left: 8%;
-  padding-top: 2.5%;
+  padding-top: 2%;
 }
 
 
@@ -68,7 +69,7 @@
   padding-right: 30px;
   max-width: 270px;
   max-height: 150px;
-  padding-top: auto;
+  padding-top: 28px;
   padding-bottom:auto;
 
 }
