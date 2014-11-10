@@ -34,13 +34,15 @@
   <div class="container-fluid">
     <div class="body row wire">
       <div class="jumbo col-md-10 wire"> TEST JUMBOTRON CSS</div>
-      <div class=" sidebar-right pull-right col-md-2 side wire">Side Bar</div>
 
+      <div class=" sidebar-right pull-right col-md-2 side wire">Side Bar
+
+      </div>
 
         <div class="menu wire col-md-10">
 
           <div class="submenu wire col-md-2">
-            <div class="selected wire" id="1"> Sandwiches</div>
+            <div class="selected wire" id=""><a href="#/sandwiches">Sandwiches</a></div>
             <div class="selected wire" id="0"> Catering Menu</div>
             <div class="selected wire" id="2"> Beverages</div>
           </div>
@@ -71,6 +73,26 @@
   <script src="bower_components/backbone/backbone.js"></script>
   <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="js/app.js" type="text/javascript"></script>
+  <!--
+  <script type="text/x-handlebars-template" id="cartTemplate">
+    {{#each cart}}
+      <div class="cart">
+        // <h2><{{product.title}}</h2>
+        <h2><Product title</h2>
+      </div>
+    {{/each}}
+  </script>
+   -->
+  <script type="text/x-handlebars-template" id="sandwichesTemplate">
+    {{#each sandwiches.products}}
+      <div class="sandwich">
+        <h2>{{title}}</h2>
+        <img src="{{image_url}}">
+        <p>{{description}}</p>
+        <h3>{{price}}</h3>
+      </div>
+    {{/each}}
+  </script>
 
 </body>
 </html>
