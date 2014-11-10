@@ -85,13 +85,12 @@
    -->
   <script type="text/x-handlebars-template" id="sandwichesTemplate">
     {{#each sandwiches.products}}
-      <div class="sandwich">
+      <div class="menu_item">
         <h2>{{title}}</h2>
-        <div class="menu_images">
-          <img src="{{image_url}}">
-        </div>
+        <img src="{{image_url}}">
         <p>{{description}}</p>
         <h3>{{price}}</h3>
+        <button class="btn btn-danger">Add to Cart</button>
       </div>
     {{/each}}
   </script>
