@@ -44,7 +44,7 @@
           <div class="submenu wire col-md-2">
             <div class="selected wire" id=""><a href="#/sandwiches">Sandwiches</a></div>
             <div class="selected wire" id=""><a href="#/catering">Catering Menu</a></div>
-            <div class="selected wire" id="2"> Beverages</div>
+            <div class="selected wire" id="2"><a href="#/beverages">Beverages</a></div>
           </div>
 
           <div class="Front_menu col-md-10 wire" id="Front_menu">
@@ -99,8 +99,20 @@
     {{#each catering.products}}
       <div class="menu_item">
         <h2>{{title}}</h2>
-        <img src="{{image_url}}">
         <p>{{description}}</p>
+        <img src="{{image_url}}">
+        <h3>{{price}}</h3>
+        <button class="btn btn-danger">Add to Cart</button>
+      </div>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars-template" id="beveragesTemplate">
+    {{#each beverages.products}}
+      <div class="menu_item">
+        <h2>{{title}}</h2>
+        <p>{{description}}</p>
+        <img src="{{image_url}}">
         <h3>{{price}}</h3>
         <button class="btn btn-danger">Add to Cart</button>
       </div>

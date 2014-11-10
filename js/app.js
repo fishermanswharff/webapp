@@ -39,7 +39,22 @@ var Router = Backbone.Router.extend({
     }).fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);
     });
-  }
+  },
+
+  beverages: function(){
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/categories/3',
+      type: 'GET',
+    }).done(function(response){
+      var template = Handlebars.compile($("#beveragesTemplate").html());
+      $("#selected_menu").html(template({
+        beverages: response
+      }));
+    }).fail(function(jqXHR, textStatus, errorThrown){
+      trace(jqXHR, textStatus, errorThrown);
+    });
+  },
+
 
 });
 
