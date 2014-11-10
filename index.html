@@ -39,15 +39,15 @@
 
       </div>
 
-        <div class="menu wire col-md-10">
+        <div class="menu col-md-10">
 
           <div class="submenu col-md-2">
             <div class="selected wire" id=""><a href="#/sandwiches">Sandwiches</a></div>
             <div class="selected wire" id=""><a href="#/catering">Catering Menu</a></div>
-            <div class="selected wire" id="2"><a href="#/beverages">Beverages</a></div>
+            <div class="selected wire" id=""><a href="#/beverages">Beverages</a></div>
           </div>
 
-          <div class="Front_menu col-md-10 wire" id="Front_menu">
+          <div class="Front_menu col-md-10" id="Front_menu">
             <div id="selected_menu"></div>
           </div>
 
@@ -74,13 +74,18 @@
   <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="js/app.js" type="text/javascript"></script>
 
+
   <script type="text/x-handlebars-template" id="sandwichesTemplate">
     {{#each sandwiches.products}}
       <div class="menu_item">
+        <div class="pull-left">
+          <img src="{{image_url}}">
+        </div>
+        <div class="group-auto-align">
         <h2>{{title}}</h2>
-        <img src="{{image_url}}">
         <p>{{description}}</p>
         <h3>{{price}}</h3>
+        </div>
         <button class="btn btn-danger">Add to Cart</button>
       </div>
     {{/each}}
@@ -89,10 +94,14 @@
   <script type="text/x-handlebars-template" id="cateringTemplate">
     {{#each catering.products}}
       <div class="menu_item">
+        <div class="pull-left">
+          <img src="{{image_url}}">
+        </div>
+        <div class="group-auto-align">
         <h2>{{title}}</h2>
         <p>{{description}}</p>
-        <img src="{{image_url}}">
         <h3>{{price}}</h3>
+        </div>
         <button class="btn btn-danger">Add to Cart</button>
       </div>
     {{/each}}
@@ -101,14 +110,20 @@
   <script type="text/x-handlebars-template" id="beveragesTemplate">
     {{#each beverages.products}}
       <div class="menu_item">
+        <div class="pull-left height">
+          <img src="{{image_url}}">
+        </div>
+        <div class="group-auto-align">
         <h2>{{title}}</h2>
         <p>{{description}}</p>
-        <img src="{{image_url}}">
         <h3>{{price}}</h3>
+        </div>
         <button class="btn btn-danger">Add to Cart</button>
       </div>
     {{/each}}
   </script>
+
+
 
 </body>
 </html>
