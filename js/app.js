@@ -1,18 +1,25 @@
 menu = {};
 
 menu.load_menu = function(data) {
+      data = data.products;
+      var item = 0;
       data.forEach(function(data) {
-        $('#Front_menu').append($('<div class="wire">').text("Test item"));
-      });
+        item = item + 1;
+        $('#Front_menu').append($('<div class="wire item id="menu_item_' + item + '">').text(data.title));
+        $('#Front_menu').append($('<img src=' + data.image_url + ' class="image">'));
 
+      });
   console.log("Menu Loaded");
 };
+
+
 
 function trace(){ for(var i = 0, count = arguments.length; i < count; i++){console.log(arguments[i]);}}
 
 $(document).ready(function(){
+  var selected = 1;
   $.ajax({
-      url: 'https://bobsapi.herokuapp.com/products',
+      url: 'https://bobsapi.herokuapp.com/categories/' + selected,
       type: 'GET',
       complete: function(jqXHR,textStatus){
         trace(jqXHR, textStatus, "complete get!!");
@@ -30,8 +37,8 @@ $(document).ready(function(){
       trace(jqXHR, textStatus, thrownError);
       router.navigate("home",{trigger: true});
     });
+});
 
-
-
-
+$( ".selected" ).click(function() {
+  alert(event.target.id);
 });
