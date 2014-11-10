@@ -23,3 +23,10 @@
 .front_menu{
   height: 300px;
 }
+
+
+/* MENU IMAGES */
+
+.menu_images img {
+  max-width: 15em;
+}
