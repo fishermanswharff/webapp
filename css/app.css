@@ -79,5 +79,21 @@
 }
 
 
+/* Cart */
+
+.shopping-cart {
+  border: 1px solid #E1674D;
+  width: 220px;
+  margin-top: 30px;
+}
+
+.shopping-cart h4{
+  text-align: center;
+  background-color: #E1674D;
+  padding: 10px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
 
 
