@@ -82,20 +82,29 @@
   border-radius: 0;
 }
 
+h2 {
+  font-family: 'Pacifico', cursive;
+}
+
 
 /* Category menu buttons */
 
-.btn.btn-danger.category {
-  padding: 30px;
+.btn.btn-warning.category {
+  padding: 20px;
   border-radius: 0;
   margin: 10px;
-  width: 150px;
+  margin-right: 20px;
+  width: 200px;
 /*  background-color: #E1674D;*/
 }
 
-.btn.btn-danger.category a{
-  color: white;
+.btn.btn-warning.category a{
+  color: black;
   text-decoration: none;
+  font-family: 'Pacifico', cursive;
+  font-size: 150%;
+  padding-left: auto;
+  padding-right: auto;
 }
 
 
