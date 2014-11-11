@@ -1,61 +1,30 @@
+
+* {
+  box-sizing: border-box;
+}
 .body {
   padding-top: 50px;
 }
 
-/*.wire {
-  border: 1px solid;
-}*/
-
-.footer {
-  padding: 10px;
-  background-color: black;
+/* NAVBAR */
+/*——————————————————————————————————————*/
+nav.navbar {
+  margin-bottom: 0px;
+  background: #000;
 }
 
-.image {
-  height: 100px;
-}
-
-/*TEST CSS*/
-
-.side {
-  height: 500px;
-}
-
-.front_menu{
-  height: 300px;
-}
-
-
-
-
-/* NAV BAR */
-
-.nav {
-  padding-left: 38%;
-  font-size: 140%;
-}
-
-
-
-
-/* JUMBOTRON */
-.jumbo {
+/* HEADER */
+/*——————————————————————————————————————*/
+.header {
   height: 160px;
   background-image: url("http://www.eggnerd.com/wp-content/uploads/2013/09/beez10.jpg");
   font-family: 'Pacifico', cursive;
-/*  background-color: #EBDCC4;*/
 }
-
-.jumbo h1{
-  font-size: 70px;
-  padding-left: 8%;
-  padding-top: 2%;
-}
+.header h1{ font-size: 70px; }
 
 
-
-/* MENU IMAGES */
-
+/* PRODUCTS Listing */
+/*——————————————————————————————————————*/
 .menu_item {
   border-bottom: 1px solid #EBDCC4;
   background: rgb(254,255,255); /* Old browsers */
@@ -66,40 +35,22 @@
   background: -ms-linear-gradient(top,  rgba(254,255,255,1) 82%,rgba(255,251,244,1) 99%); /* IE10+ */
   background: linear-gradient(to bottom,  rgba(254,255,255,1) 82%,rgba(255,251,244,1) 99%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#fffbf4',GradientType=0 ); /* IE6-9 */
-  padding: 1em;
 }
 
 .menu_item img {
-  padding-right: 30px;
-  max-width: 270px;
-  max-height: 150px;
-  padding-top: 28px;
-  padding-bottom:auto;
-
+  width: 200px;
+  height: auto;
+  margin-right: 10px;
+  margin-top: 0;
 }
 
-.group-auto-align {
-  line-height:0;
-}
+.group-auto-align { line-height:0; }
 
-.btn-danger {
-  border-radius: 0;
-}
-
-h2 {
-  font-family: 'Pacifico', cursive;
-}
-
-
-/* Category menu buttons */
+h2 { font-family: 'Pacifico', cursive; }
 
 .btn.btn-warning.category {
-  padding: 20px;
   border-radius: 0;
-  margin: 10px;
-  margin-right: 20px;
-  width: 200px;
-/*  background-color: #E1674D;*/
+  text-align: center;
 }
 
 .btn.btn-warning.category a{
@@ -107,28 +58,19 @@ h2 {
   text-decoration: none;
   font-family: 'Pacifico', cursive;
   font-size: 150%;
-  padding-left: auto;
-  padding-right: auto;
 }
 
-
-.submenu {
-  margin-top: 30px;
-}
-
-
-/* Cart */
-
+/* CART */
+/*——————————————————————————————————————*/
 .shopping-cart {
   border: 1px solid #E1674D;
-  width: 220px;
   margin-top: 30px;
 }
 
 .shopping-cart h4{
   text-align: center;
   background-color: #E1674D;
-  padding: 10px;
+  /*padding: 10px;*/
   margin-top: 0;
   margin-bottom: 30px;
 }
