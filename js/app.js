@@ -2,7 +2,7 @@ function trace(){ for(var i = 0, count = arguments.length; i < count; i++){conso
 
 var Router = Backbone.Router.extend({
   routes: {
-    '': 'menu',
+    '': 'sandwiches',
     'about': 'about',
     'login': 'login',
     'sandwiches': 'sandwiches',
@@ -17,7 +17,7 @@ var Router = Backbone.Router.extend({
     // trace("hello world");
 
     $.ajax({
-      url: 'https://bobsapi.herokuapp.com/products',
+      url: 'https://bobsapi.herokuapp.com/categories',
       type: 'GET',
     }).done(function(response){
       trace(response);
@@ -63,9 +63,9 @@ var Router = Backbone.Router.extend({
       type: 'GET',
     }).done(function(response){
       trace(response);
-      var template = Handlebars.compile($("#sandwichesTemplate").html());
+      var template = Handlebars.compile($("#menuTemplate").html());
       $("#selected_menu").html(template({
-        sandwiches: response
+        menu: response
       }));
     }).fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);
@@ -77,9 +77,9 @@ var Router = Backbone.Router.extend({
       url: 'https://bobsapi.herokuapp.com/categories/1',
       type: 'GET',
     }).done(function(response){
-      var template = Handlebars.compile($("#cateringTemplate").html());
+      var template = Handlebars.compile($("#menuTemplate").html());
       $("#selected_menu").html(template({
-        catering: response
+        menu: response
       }));
     }).fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);
@@ -91,9 +91,9 @@ var Router = Backbone.Router.extend({
       url: 'https://bobsapi.herokuapp.com/categories/3',
       type: 'GET',
     }).done(function(response){
-      var template = Handlebars.compile($("#beveragesTemplate").html());
+      var template = Handlebars.compile($("#menuTemplate").html());
       $("#selected_menu").html(template({
-        beverages: response
+        menu: response
       }));
     }).fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);

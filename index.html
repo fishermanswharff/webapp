@@ -93,7 +93,7 @@
 
   <!-- Page root template -->
   <script type="text/x-handlebars-template" id="menuTemplate">
-    {{#each menu}}
+    {{#each menu.products}}
       <div class="menu_item">
         <div class="pull-left">
           <img src="{{image_url}}">
@@ -109,59 +109,6 @@
           <input type="hidden" value="{{id}}" >
           <input type="number">
         </form>
-
-
-      </div>
-    {{/each}}
-  </script>
-
-  <!-- menu button & sandwiches button templates -->
-  <script type="text/x-handlebars-template" id="sandwichesTemplate">
-    {{#each sandwiches.products}}
-      <div class="col-md-12 menu_item">
-        <div class="pull-left">
-          <img src="{{image_url}}">
-        </div>
-        <div class="group-auto-align">
-        <h2>{{title}}</h2>
-        <p>{{description}}</p>
-        <h3>{{price}}</h3>
-        </div>
-        <button id="{{id}}" class="btn btn-danger">Add to Cart</button>
-      </div>
-    {{/each}}
-  </script>
-
-  <!-- catering button template -->
-  <script type="text/x-handlebars-template" id="cateringTemplate">
-    {{#each catering.products}}
-      <div class="menu_item">
-        <div class="pull-left">
-          <img src="{{image_url}}">
-        </div>
-        <div class="group-auto-align">
-        <h2>{{title}}</h2>
-        <p>{{description}}</p>
-        <h3>{{price}}</h3>
-        </div>
-        <button id="{{id}}" class="btn btn-danger">Add to Cart</button>
-      </div>
-    {{/each}}
-  </script>
-
-<!-- beverages button template -->
-  <script type="text/x-handlebars-template" id="beveragesTemplate">
-    {{#each beverages.products}}
-      <div class="menu_item">
-        <div class="pull-left height">
-          <img src="{{image_url}}">
-        </div>
-        <div class="group-auto-align">
-        <h2>{{title}}</h2>
-        <p>{{description}}</p>
-        <h3>{{price}}</h3>
-        </div>
-        <button id="{{id}}" class="btn btn-danger">Add to Cart</button>
       </div>
     {{/each}}
   </script>
