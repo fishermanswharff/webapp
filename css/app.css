@@ -2,12 +2,13 @@
   padding-top: 50px;
 }
 
-.wire {
+/*.wire {
   border: 1px solid;
-}
+}*/
 
 .footer {
   padding: 10px;
+  background-color: black;
 }
 
 .image {
@@ -23,6 +24,9 @@
 .front_menu{
   height: 300px;
 }
+
+
+
 
 /* NAV BAR */
 
