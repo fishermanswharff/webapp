@@ -108,10 +108,16 @@ var Router = Backbone.Router.extend({
   },
 
   checkout: function() {
-    var template = Handlebars.compile($("#checkoutTemplate").html());
-      $('#selected_menu').html(template({
-        cartId: "12"
-      }));
+    
+    $("#selected_menu").load('partials/checkout.html', function(){
+      trace("checkout html loaded!");
+    });
+
+
+    // var template = Handlebars.compile($("#checkoutTemplate").html());
+    //   $('#selected_menu').html(template({
+    //     cartId: "12"
+    //   }));
   },
 
 });

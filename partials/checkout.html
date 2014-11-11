@@ -1,0 +1,39 @@
+<form id="order-form" action="" method="post">
+  <div><label>Name: </label><input name="name"></div>
+  <div><label>Address: </label><input name="address"></div>
+  <div><label>Email: </label><input name="Email"></div>
+      <select id="payment_method">
+        <option>Credit Card</option>
+        <option>Cash</option>
+        <option>Schrute Bucks</option>
+      </select>
+  <input type="checkbox" name="delivery"> Delivery?
+  <input type="hidden" name="cartId" id="cartId" value="{{cartId}}">
+
+  <script>
+
+    var form = $("#order-form")
+
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+      image: '/square-image.png',
+      token: function(token) {
+        OrderSubmission.processOrder(token,form);
+      }
+    });
+
+    document.getElementById('checkoutSubmit').addEventListener('click', function(e) {
+      // Open Checkout with further options
+      handler.open({
+        name: 'Bob\'s Bagels',
+        description: '2 widgets ($20.00)',
+        amount: 2000
+      });
+      e.preventDefault();
+    });
+  </script>
+
+
+  <input type="submit" id="checkoutSubmit" value="Place Order">
+  
+</form>
