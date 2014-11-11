@@ -18,6 +18,7 @@ var Router = Backbone.Router.extend({
       url: 'https://bobsapi.herokuapp.com/categories/2',
       type: 'GET',
     }).done(function(response){
+      trace(response);
       var template = Handlebars.compile($("#sandwichesTemplate").html());
       $("#selected_menu").html(template({
         sandwiches: response
@@ -119,10 +120,12 @@ Backbone.history.start();
 
 $(document).ready(function(){
     
-  var cartId;
+
+  // var cartId;
   // 
+  
+  /*
   $.ajax({
-    // url: 'http://localhost:3000/carts',
     url: 'https://bobsapi.herokuapp.com/carts',
     type: 'POST',
     data: { cart:{} }
@@ -133,7 +136,7 @@ $(document).ready(function(){
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
   });
-
+  
 
   var addLineItems = function(object){
     $.ajax({
@@ -141,7 +144,7 @@ $(document).ready(function(){
       type: 'POST',
       data: {
         line_item: {
-          product_id: 18,
+          product_id: 7,
           quantity: 1,
           cart_id: object.id
         }
@@ -154,13 +157,15 @@ $(document).ready(function(){
     });
   };
 
+  // addLineItem();
+
   var addOptionsToLineItems = function(object){
     $.ajax({
       url: 'https://bobsapi.herokuapp.com/options',
       type: 'POST',
       data: {
         option: {
-          items: "extra cheese",
+          items: "extra meat",
           price: 1.99,
           line_item_id: object.id
         }
@@ -183,6 +188,7 @@ $(document).ready(function(){
   };
 
 
+
   var checkout = function(cartId){
     $.ajax({
       url: 'https://bobsapi.herokuapp.com/orders',
@@ -203,6 +209,8 @@ $(document).ready(function(){
       trace(jqXHR, textStatus, thrownError);
     });
   };
+  */
+
 
   // menu.selected = 0;
   // menu.get_request();
