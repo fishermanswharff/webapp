@@ -107,6 +107,13 @@ var Router = Backbone.Router.extend({
       }));
   },
 
+  checkout: function() {
+    var template = Handlebars.compile($("#checkoutTemplate").html());
+      $('#selected_menu').html(template({
+        cartId: "12"
+      }));
+  },
+
 });
 
 
@@ -164,11 +171,11 @@ Backbone.history.start();
 
 $(document).ready(function(){
 
-    
+
 
   // var cartId;
-  // 
-  
+  //
+
   /*
   $.ajax({
     url: 'https://bobsapi.herokuapp.com/carts',
@@ -181,7 +188,7 @@ $(document).ready(function(){
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
   });
-  
+
 
   var addLineItems = function(object){
     $.ajax({

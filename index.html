@@ -66,6 +66,7 @@
       <div class="col-md-2">
         <div class="shopping-cart">
           <h4>Your Cart</h4>
+          <div class="selected btn btn-warning category" id=""><a href="#/checkout">Checkout</a></div>
         </div>
       </div>
     </div>
@@ -113,8 +114,35 @@
     {{/each}}
   </script>
 
-  <!-- delivery template-->
+  <!-- checkout template-->
 
+  <script type="text/x-handlebars-template" id="checkoutTemplate">
+      <div class="menu_item">
+        <p>Checkout Form</p>
+          <form action="https://bobsapi.herokuapp.com/orders" method="post">
+            <div><label>Name: </label><input name="name"></div>
+            <div><label>Address: </label><input name="address"></div>
+            <div><label>Email: </label><input name="Email"></div>
+                <select id="payment_method">
+                  <option>Credit Card</option>
+                  <option>Cash</option>
+                  <option>Schrute Bucks</option>
+                </select>
+            <input type="checkbox" name="delivery"> Delivery?
+              <hr>
+            <div id="payment_info">
+            <strong>Payment Info</strong>
+            <div><label>Credit Card: </label><input name="number"></div>
+            <div><label>CVC: </label><input name="cvc"> <sub>the 3 digit number of the back.</sub></div>
+            <div><label>Card Expiration: </label><input name="exp_mon"> - <input name="exp_year"></div>
+            </div>
+
+            <input type="text" name="cartId" id="cartId" value="{{cartId}}" />
+
+            <button class="btn btn-warning">Place your Order</button>
+          </form>
+      </div>
+  </script>
 
 
   <!-- cart template-->
