@@ -13,6 +13,50 @@ var Router = Backbone.Router.extend({
     'checkout': 'checkout'
   },
 
+  menu: function(){
+    // trace("hello world");
+
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/products',
+      type: 'GET',
+    }).done(function(response){
+      trace(response);
+      var template = Handlebars.compile($("#menuTemplate").html());
+      $("#selected_menu").html(template({
+        menu: response
+      }));
+      var $forms = $(".lineitem_submit");
+      $forms.each(function(index,form){
+        $(form).on("submit", function(e){
+          LineItemSubmission.processForm(e,form,router);
+        });
+      });
+    }).fail(function(jqXHR, textStatus, errorThrown){
+      trace(jqXHR, textStatus, errorThrown);
+    });
+  },
+
+// $.ajax({
+//     url: 'https://bobsapi.herokuapp.com/products',
+//     type: 'GET',
+//     complete: function(jqXHR,textStatus){
+//       trace(jqXHR, textStatus, "complete get!!");
+//     },
+//     success: function(data, textStatus, jqXHR){
+//       trace(data,textStatus, jqXHR, "successful get!!");
+//     },
+//     error: function(jqXHR,error,exception){
+//       trace(jqXHR,error,exception);
+//     },
+//   }).done(function(response){
+//     trace(response, "done ajax!!");
+//   }).fail(function(jqXHR, textStatus, thrownError){
+//     trace(jqXHR, textStatus, thrownError);
+//     router.navigate("home",{trigger: true});
+//   });
+
+// });
+
   sandwiches: function(){
     $.ajax({
       url: 'https://bobsapi.herokuapp.com/categories/2',
@@ -118,91 +162,100 @@ var router = new Router();
 Backbone.history.start();
 
 $(document).ready(function(){
-    
+
   var cartId;
-  // 
-  $.ajax({
-    // url: 'http://localhost:3000/carts',
-    url: 'https://bobsapi.herokuapp.com/carts',
-    type: 'POST',
-    data: { cart:{} }
-  }).done(function(response){
-    cartId = response.id
-    addLineItems(response);
-    trace(response) //response = cart object
-  }).fail(function(jqXHR, textStatus, errorThrown){
-    trace(jqXHR, textStatus, errorThrown);
-  });
 
+//   $.ajax({
+//     // url: 'http://localhost:3000/carts',
+//     url: 'https://bobsapi.herokuapp.com/carts',
+//     type: 'POST',
+//     data: { cart:{} }
+//   }).done(function(response){
+//     cartId = response.id
+//     // addLineItems(response);
+//     trace(response) //response = cart object //// need to save this id into a cookie session
+//   }).fail(function(jqXHR, textStatus, errorThrown){
+//     trace(jqXHR, textStatus, errorThrown);
+//   });
 
-  var addLineItems = function(object){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/line_items',
-      type: 'POST',
-      data: {
-        line_item: {
-          product_id: 18,
-          quantity: 1,
-          cart_id: object.id
-        }
-      },
-    }).done(function(response){
-      trace(response);
-      addOptionsToLineItems(response);
-    }).fail(function(jqXHR, textStatus, errorThrown){
-      trace(jqXHR, textStatus, errorThrown);
-    });
-  };
+// // this is the code that runs when we hit add to cart button
+//   var addLineItem = function(){
+//     $.ajax({
+//       // url: 'http://localhost:3000/line_items',
+//       url: 'https://bobsapi.herokuapp.com/line_items',
+//       type: 'POST',
+//       data: {
+//         line_item: {
+//           product_id: 7,
+//           quantity: 1,
+//           cart_id: 25
+//         }
+//       },
+//     }).done(function(response){
+//       trace(response);
+//       // addOptionsToLineItems(response);
+//     }).fail(function(jqXHR, textStatus, errorThrown){
+//       trace(jqXHR, textStatus, errorThrown);
+//     });
+//   };
 
-  var addOptionsToLineItems = function(object){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/options',
-      type: 'POST',
-      data: {
-        option: {
-          items: "extra cheese",
-          price: 1.99,
-          line_item_id: object.id
-        }
-      },
-      success: function(data,textStatus,jqXHR){
-        // trace(data,textStatus, jqXHR, "successful post request!");
-      },
-      error: function(jqXHR, error, exception){
-        trace(jqXHR, error, exception, "you're so stupid, you're doing it wrong");
-      },
-      complete: function(jqXHR, textStatus){
-        // trace(jqXHR, textStatus, "completed ajax post request");
-      }
-    }).done(function(response){
-      trace(response);
-      checkout(cartId)
-    }).fail(function(jqXHR, textStatus, errorThrown){
+// //   // addLineItem();
 
-    });
-  };
+//   var addOptionsToLineItems = function(number){
+//     $.ajax({
+//       url: 'https://bobsapi.herokuapp.com/options',
+//       // url: 'https://bobsapi.herokuapp.com/options',
+//       type: 'POST',
+//       data: {
+//         option: {
+//           items: "extra cheese",
+//           price: 1.99,
+//           line_item_id: number
+//         }
+//       },
+//       success: function(data,textStatus,jqXHR){
+//         // trace(data,textStatus, jqXHR, "successful post request!");
+//       },
+//       error: function(jqXHR, error, exception){
+//         trace(jqXHR, error, exception, "you're so stupid, you're doing it wrong");
+//       },
+//       complete: function(jqXHR, textStatus){
+//         // trace(jqXHR, textStatus, "completed ajax post request");
+//       }
+//     }).done(function(response){
+//       trace(response);
+//       // checkout(cartId)
+//     }).fail(function(jqXHR, textStatus, errorThrown){
 
+//     });
+//   };
 
-  var checkout = function(cartId){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/orders',
-      type: 'POST',
-      data: {
-        order: {
-          name: "Jason Wharff",
-          address: "21 Shepard St. #1",
-          email: "fishermanswharff@mac.com",
-          pay_type: "Credit Card",
-          delivery: true,
-          cart_id: cartId
-        }
-      },
-    }).done(function(response){
-      trace(response, "done ajax!!");
-    }).fail(function(jqXHR, textStatus, thrownError){
-      trace(jqXHR, textStatus, thrownError);
-    });
-  };
+// //   // addOptionsToLineItems(22);
+
+// // checkout gives us an order object
+//   var checkout = function(number){
+//     $.ajax({
+//       // url: 'https://localhost:3000/orders',
+//       url: 'https://bobsapi.herokuapp.com/orders',
+//       type: 'POST',
+//       data: {
+//         order: {
+//           name: "Shaai Lafollette",
+//           address: "29 Cross Street. #1",
+//           email: "fishermanswharff@mac.com",
+//           pay_type: "Credit Card",
+//           delivery: true,
+//           cart_id: number
+//         }
+//       },
+//     }).done(function(response){
+//       trace(response, "done ajax!!");
+//     }).fail(function(jqXHR, textStatus, thrownError){
+//       trace(jqXHR, textStatus, thrownError);
+//     });
+//   };
+
+//   checkout(25);
 
   // menu.selected = 0;
   // menu.get_request();
@@ -210,6 +263,25 @@ $(document).ready(function(){
   // $('.jumbo').on('click', function(){
   //   $(this).toggleClass('.jumbo');
   // });
+
+// $.ajax({
+//     url: 'https://bobsapi.herokuapp.com/products',
+//     type: 'GET',
+//     complete: function(jqXHR,textStatus){
+//       trace(jqXHR, textStatus, "complete get!!");
+//     },
+//     success: function(data, textStatus, jqXHR){
+//       trace(data,textStatus, jqXHR, "successful get!!");
+//     },
+//     error: function(jqXHR,error,exception){
+//       trace(jqXHR,error,exception);
+//     },
+//   }).done(function(response){
+//     trace(response, "done ajax!!");
+//   }).fail(function(jqXHR, textStatus, thrownError){
+//     trace(jqXHR, textStatus, thrownError);
+//     router.navigate("home",{trigger: true});
+//   });
 
 });
 
