@@ -83,20 +83,21 @@
   </footer>
 
 
-
+  <script src="https://checkout.stripe.com/checkout.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="bower_components/backbone/backbone.js"></script>
   <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="js/lineItemSubmission.js"></script>
+  <script src="js/orderSubmission.js"></script>
   <script src="js/app.js" type="text/javascript"></script>
 
   <!-- Page root template -->
   <script type="text/x-handlebars-template" id="menuTemplate">
     {{#each menu.products}}
       <div class="menu_item">
-        <div class="pull-left">
+        <div class="menu-image pull-left">
           <img src="{{image_url}}">
         </div>
         <div class="group-auto-align">
@@ -115,34 +116,6 @@
   </script>
 
   <!-- checkout template-->
-
-  <script type="text/x-handlebars-template" id="checkoutTemplate">
-      <div class="menu_item">
-        <p>Checkout Form</p>
-          <form action="https://bobsapi.herokuapp.com/orders" method="post">
-            <div><label>Name: </label><input name="name"></div>
-            <div><label>Address: </label><input name="address"></div>
-            <div><label>Email: </label><input name="Email"></div>
-                <select id="payment_method">
-                  <option>Credit Card</option>
-                  <option>Cash</option>
-                  <option>Schrute Bucks</option>
-                </select>
-            <input type="checkbox" name="delivery"> Delivery?
-              <hr>
-            <div id="payment_info">
-            <strong>Payment Info</strong>
-            <div><label>Credit Card: </label><input name="number"></div>
-            <div><label>CVC: </label><input name="cvc"> <sub>the 3 digit number of the back.</sub></div>
-            <div><label>Card Expiration: </label><input name="exp_mon"> - <input name="exp_year"></div>
-            </div>
-
-            <input type="text" name="cartId" id="cartId" value="{{cartId}}" />
-
-            <button class="btn btn-warning">Place your Order</button>
-          </form>
-      </div>
-  </script>
 
 
   <!-- cart template-->
