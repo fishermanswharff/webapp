@@ -3,7 +3,7 @@
   // ————————————————————————————————————————————————————
   /*
   $.ajax({
-    url: 'http://localhost:3000/carts',
+    //url: 'http://localhost:3000/carts',
     //url: 'https://bobsapi.herokuapp.com/carts',
     type: 'POST',
     data: { cart:{} }
@@ -11,6 +11,29 @@
     trace(response) //response = cart object
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
+  });
+  */
+
+  // POST::Order = {}
+  // ————————————————————————————————————————————————————
+  /*
+  $.ajax({
+    url: 'http://localhost:3000/orders',
+    type: 'POST',
+    data: {
+      order: {
+        name: "Jason Wharff",
+        address: "21 Shepard St. #1",
+        email: "fishermanswharff@mac.com",
+        pay_type: "Credit Card",
+        delivery: true,
+        cart_id: 68
+      }
+    },
+  }).done(function(response){
+    trace(response, "done ajax!!");
+  }).fail(function(jqXHR, textStatus, thrownError){
+    trace(jqXHR, textStatus, thrownError);
   });
   */
 
@@ -108,29 +131,7 @@
   });
   */
 
-  // POST::Order = {}
-  // ————————————————————————————————————————————————————
   
-  $.ajax({
-    url: 'http://localhost:3000/orders',
-    type: 'POST',
-    data: {
-      order: {
-        name: "Jason Wharff",
-        address: "21 Shepard St. #1",
-        email: "fishermanswharff@mac.com",
-        pay_type: "Credit Card",
-        delivery: true,
-        cart_id: 68
-      }
-    },
-  }).done(function(response){
-    trace(response, "done ajax!!");
-  }).fail(function(jqXHR, textStatus, thrownError){
-    trace(jqXHR, textStatus, thrownError);
-  });
-  
-
   
 
   // GET all the carts -> admin only

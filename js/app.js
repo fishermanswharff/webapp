@@ -81,6 +81,92 @@ var router = new Router();
 Backbone.history.start();
 
 $(document).ready(function(){
+    
+  var cartId;
+  // 
+  $.ajax({
+    // url: 'http://localhost:3000/carts',
+    url: 'https://bobsapi.herokuapp.com/carts',
+    type: 'POST',
+    data: { cart:{} }
+  }).done(function(response){
+    cartId = response.id
+    addLineItems(response);
+    trace(response) //response = cart object
+  }).fail(function(jqXHR, textStatus, errorThrown){
+    trace(jqXHR, textStatus, errorThrown);
+  });
+
+
+  var addLineItems = function(object){
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/line_items',
+      type: 'POST',
+      data: {
+        line_item: {
+          product_id: 18,
+          quantity: 1,
+          cart_id: object.id
+        }
+      },
+    }).done(function(response){
+      trace(response);
+      addOptionsToLineItems(response);
+    }).fail(function(jqXHR, textStatus, errorThrown){
+      trace(jqXHR, textStatus, errorThrown);
+    });
+  };
+
+  var addOptionsToLineItems = function(object){
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/options',
+      type: 'POST',
+      data: {
+        option: {
+          items: "extra cheese",
+          price: 1.99,
+          line_item_id: object.id
+        }
+      },
+      success: function(data,textStatus,jqXHR){
+        // trace(data,textStatus, jqXHR, "successful post request!");
+      },
+      error: function(jqXHR, error, exception){
+        trace(jqXHR, error, exception, "you're so stupid, you're doing it wrong");
+      },
+      complete: function(jqXHR, textStatus){
+        // trace(jqXHR, textStatus, "completed ajax post request");
+      }
+    }).done(function(response){
+      trace(response);
+      checkout(cartId)
+    }).fail(function(jqXHR, textStatus, errorThrown){
+
+    });
+  };
+
+
+  var checkout = function(cartId){
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/orders',
+      type: 'POST',
+      data: {
+        order: {
+          name: "Jason Wharff",
+          address: "21 Shepard St. #1",
+          email: "fishermanswharff@mac.com",
+          pay_type: "Credit Card",
+          delivery: true,
+          cart_id: cartId
+        }
+      },
+    }).done(function(response){
+      trace(response, "done ajax!!");
+    }).fail(function(jqXHR, textStatus, thrownError){
+      trace(jqXHR, textStatus, thrownError);
+    });
+  };
+
   // menu.selected = 0;
   // menu.get_request();
 });
@@ -89,3 +175,25 @@ $(document).ready(function(){
 //   menu.selected = event.target.id;
 //   menu.clear();
 // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
