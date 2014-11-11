@@ -25,8 +25,45 @@ var Router = Backbone.Router.extend({
     }).fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);
     });
-  }
+  },
+
+  catering: function(){
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/categories/1',
+      type: 'GET',
+    }).done(function(response){
+      var template = Handlebars.compile($("#cateringTemplate").html());
+      $("#selected_menu").html(template({
+        catering: response
+      }));
+    }).fail(function(jqXHR, textStatus, errorThrown){
+      trace(jqXHR, textStatus, errorThrown);
+    });
+  },
+
+  beverages: function(){
+    $.ajax({
+      url: 'https://bobsapi.herokuapp.com/categories/3',
+      type: 'GET',
+    }).done(function(response){
+      var template = Handlebars.compile($("#beveragesTemplate").html());
+      $("#selected_menu").html(template({
+        beverages: response
+      }));
+    }).fail(function(jqXHR, textStatus, errorThrown){
+      trace(jqXHR, textStatus, errorThrown);
+    });
+  },
+
+  about: function() {
+    var template = Handlebars.compile($("#aboutTemplate").html());
+      $('#selected_menu').html(template({
+          about: "Robert 'Bob' Bagler was born in Boston in 1951; after years of working in his father's restaurant, 'Arthur's', he struck out on his own in 1979 and started Bob's Bagels right where it sits today, at XYZ Ave in Boston. For the last forty years, Bob's Bagels has strived to proved the best bagels in town, at the best prices, made with love from only the freshest ingredients. Bob still works the counter, just like the old days, so stop in sometime and say hello!"
+      }));
+  },
+
 });
+
 
 
 
@@ -83,6 +120,11 @@ Backbone.history.start();
 $(document).ready(function(){
   // menu.selected = 0;
   // menu.get_request();
+
+  // $('.jumbo').on('click', function(){
+  //   $(this).toggleClass('.jumbo');
+  // });
+
 });
 
 // $( ".selected" ).click(function() {
