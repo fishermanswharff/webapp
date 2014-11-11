@@ -39,7 +39,9 @@ nav.navbar {
 
 .menu_item img {
   width: 200px;
-  height: auto;
+  
+  /*height: auto;*/
+  max-height: 100px;
   margin-right: 10px;
   margin-top: 0;
 }
