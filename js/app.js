@@ -2,25 +2,16 @@ function trace(){ for(var i = 0, count = arguments.length; i < count; i++){conso
 
 var Router = Backbone.Router.extend({
   routes: {
-    '': 'sandwiches',
-    'about': 'about',
+    '': 'menu',
     'login': 'login',
-    'sandwiches': 'sandwiches',
-    'catering': 'catering',
-    'beverages': 'beverages',
-    'cart': 'cart',
-    'delivery': 'delivery',
     'checkout': 'checkout'
   },
 
   menu: function(){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/categories',
-      type: 'GET',
-    }).done(function(response){
-      trace(response);
-      var template = Handlebars.compile($("#menuTemplate").html());
-      $("#selected_menu").html(template({
+    $.ajax({ url: 'http://localhost:3000/categories', type: 'GET',})
+    .done(function(response){
+      var template = Handlebars.compile($("#mainTemplate").html());
+      $("#bobs-bagels-menu").html(template({
         menu: response
       }));
       var $forms = $(".lineitem_submit");
@@ -29,62 +20,19 @@ var Router = Backbone.Router.extend({
           LineItemSubmission.processForm(e,form,router);
         });
       });
-    }).fail(function(jqXHR, textStatus, errorThrown){
+    })
+    .fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);
     });
-  },
 
-  sandwiches: function(){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/categories/2',
-      type: 'GET',
-    }).done(function(response){
-      var template = Handlebars.compile($("#menuTemplate").html());
-      $("#selected_menu").html(template({
-        menu: response
-      }));
-    }).fail(function(jqXHR, textStatus, errorThrown){
-      trace(jqXHR, textStatus, errorThrown);
+    
+    $("#clear-cart").on("submit",function(e){
+      Cart.clearCart(e,router);
     });
-  },
-
-  catering: function(){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/categories/1',
-      type: 'GET',
-    }).done(function(response){
-      var template = Handlebars.compile($("#menuTemplate").html());
-      $("#selected_menu").html(template({
-        menu: response
-      }));
-    }).fail(function(jqXHR, textStatus, errorThrown){
-      trace(jqXHR, textStatus, errorThrown);
-    });
-  },
-
-  beverages: function(){
-    $.ajax({
-      url: 'https://bobsapi.herokuapp.com/categories/3',
-      type: 'GET',
-    }).done(function(response){
-      var template = Handlebars.compile($("#menuTemplate").html());
-      $("#selected_menu").html(template({
-        menu: response
-      }));
-    }).fail(function(jqXHR, textStatus, errorThrown){
-      trace(jqXHR, textStatus, errorThrown);
-    });
-  },
-
-  about: function() {
-    var template = Handlebars.compile($("#aboutTemplate").html());
-      $('#selected_menu').html(template({
-          about: "Robert 'Bob' Bagler was born in Boston in 1951; after years of working in his father's restaurant, 'Arthur's', he struck out on his own in 1979 and started Bob's Bagels right where it sits today, at XYZ Ave in Boston. For the last forty years, Bob's Bagels has strived to proved the best bagels in town, at the best prices, made with love from only the freshest ingredients. Bob still works the counter, just like the old days, so stop in sometime and say hello!"
-      }));
   },
 
   checkout: function() {
-    $("#selected_menu").load('partials/checkout.html', function(){
+    $("#line-items").load('partials/checkout.html', function(){
       trace("checkout html loaded!");
     });
   }
@@ -93,24 +41,43 @@ var Router = Backbone.Router.extend({
 var router = new Router();
 Backbone.history.start();
 
-$(document).ready(function(){
-  Cookie.getCookie("cart_id") == "null" ? Cookie.getCartId() : trace(Cookie.getCookie("cart_id"));
-
-  $.ajax({
-    url: 'http://localhost:3000/line_items',
-    type: 'POST',
-    data: {
-      line_item: {
-        product_id: 1,
-        quantity: 1,
-        cart_id: 1
-      }
-    },
-  }).done(function(response){
-    trace(response);
-  }).fail(function(jqXHR, textStatus, errorThrown){
-    trace(jqXHR, textStatus, errorThrown);
+var getLineItems = function(object){
+  $(object.line_items).each(function(index,item){
+    $.ajax({
+      url: 'http://localhost:3000/line_items/'+item.id,
+      type: 'GET',
+    }).done(function(response){
+      var template = Handlebars.compile($("#lineItemTemplate").html());
+      $("#line-items").append(template({
+        item: response
+      }));
+    }).fail(function(jqXHR, textStatus, errorThrown){
+      trace(jqXHR, textStatus, errorThrown);
+    });
+    
   });
+};
+
+$(document).ready(function(){
+  if ((Cookie.getCookie("cart_id") == "null") || (Cookie.getCookie("cart_id") == undefined)) {
+    Cookie.getCartId()
+  } else {
+    var id = Cookie.getCookie("cart_id");
+    $.ajax({
+      url: "http://localhost:3000/carts/"+id,
+      type: 'GET',
+    })
+    .done(function(response) {
+      // trace(response);
+      getLineItems(response)
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      trace(jqXHR, textStatus, errorThrown);
+    })
+    .always(function() {
+      // trace("complete");
+    });
+  }
 });
 
 

@@ -2,9 +2,51 @@
 * {
   box-sizing: border-box;
 }
-.body {
-  padding-top: 50px;
+body {
+  color: white;
+  background: url("../images/bagels.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover; 
+  -moz-background-size: cover; 
+  -o-background-size: cover; 
+  /*padding-top: 50px;*/
 }
+
+.bobs-bagels-menu {
+  background: rgba(0,0,0,0.5);
+}
+
+.product {
+  /*height: 200px;*/
+}
+
+div.product p span {
+  margin: 10px 10px;
+  display: block;
+}
+
+
+.product img {
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* NAVBAR */
 /*——————————————————————————————————————*/
@@ -25,6 +67,7 @@ nav.navbar {
 
 /* PRODUCTS Listing */
 /*——————————————————————————————————————*/
+
 .menu_item {
   border-bottom: 1px solid #EBDCC4;
   background: rgb(254,255,255); /* Old browsers */
@@ -68,8 +111,27 @@ h2 { font-family: 'Pacifico', cursive; }
 /* CART */
 /*——————————————————————————————————————*/
 .shopping-cart {
-  border: 1px solid #E1674D;
-  margin-top: 30px;
+  position: fixed;
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 50px;
+  top: 20px;
+  right: 2%;
+  width: 46%;
+}
+
+input[type="number"] {
+  color: white;
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  width: 50px;
+  margin-left: 10px;
+  padding: 4px 0 5px 10px;
+  border-radius: 4px;
+  outline-style: auto;
+  outline-width: 5px;
+  outline-color: white;
 }
 
 .shopping-cart h4{

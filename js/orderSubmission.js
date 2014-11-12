@@ -6,7 +6,7 @@ OrderSubmission.processOrder = function(token, form){
   debugger;
 
   $.ajax({
-    url: 'https://bobsapi.herokuapp.com/orders',
+    url: 'http://localhost:3000/orders',
     type: 'POST',
     data: {
       order: {

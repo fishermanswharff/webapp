@@ -4,7 +4,7 @@
   
   $.ajax({
     //url: 'http://localhost:3000/carts',
-    //url: 'https://bobsapi.herokuapp.com/carts',
+    //url: 'http://localhost:3000/carts',
     type: 'POST',
     data: { cart:{} }
   }).done(function(response){
@@ -41,7 +41,7 @@
   // post to a new line_item
   
   $.ajax({
-    url: 'https://bobsapi.herokuapp.com/line_items',
+    url: 'http://localhost:3000/line_items',
     type: 'POST',
     data: {
       line_item: {
@@ -60,7 +60,7 @@
   // POST options for a line_item.
   
   $.ajax({
-    url: 'https://bobsapi.herokuapp.com/options',
+    url: 'http://localhost:3000/options',
     type: 'POST',
     data: {
       option: {
@@ -113,7 +113,7 @@
   // get all line_items
   
   $.ajax({
-    url: 'https://bobsapi.herokuapp.com/line_items',
+    url: 'http://localhost:3000/line_items',
     type: 'GET',
     complete: function(jqXHR,textStatus){
       trace(jqXHR, textStatus, "complete get!!");
@@ -137,7 +137,7 @@
   // GET all the carts -> admin only
   
   $.ajax({
-    // url: 'https://bobsapi.herokuapp.com/carts',
+    // url: 'http://localhost:3000/carts',
     url: 'http://localhost:3000/carts',
     type: 'GET',
     complete: function(jqXHR,textStatus){
@@ -160,7 +160,7 @@
   // ————————————————————————————————————————————————————
   
   $.ajax({
-    url: 'https://bobsapi.herokuapp.com/products',
+    url: 'http://localhost:3000/products',
     type: 'GET',
     complete: function(jqXHR,textStatus){
       trace(jqXHR, textStatus, "complete get!!");
