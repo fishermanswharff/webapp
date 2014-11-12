@@ -1,4 +1,4 @@
-var LineItemSubmission = {}
+var LineItemSubmission = {};
 
 LineItemSubmission.processForm = function(e,form,router){
   if(e.preventDefault) e.preventDefault();
@@ -7,7 +7,7 @@ LineItemSubmission.processForm = function(e,form,router){
   var quantity = $(form).find("input[type='number']").val();
   var cart_id = Cookie.getCookie("cart_id");
   LineItemSubmission.postLineItem(product_id, quantity, cart_id);
-}
+};
 
 LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
   trace(product_id, quantity, cart_id);
@@ -27,7 +27,7 @@ LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
     $("#line-items").append(template({
       item: response
     }));
-    
+
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
   });
@@ -37,7 +37,6 @@ LineItemSubmission.updateItem = function(e){
   if(e.preventDefault) e.preventDefault();
   var id = $(e.currentTarget).find("input").attr("id");
   var quantity = $(e.currentTarget).siblings("p").find("input[type='number']").val();
-  debugger;
   $.ajax({
       url: 'http://localhost:3000/line_items/'+id,
       type: 'PATCH',
@@ -51,7 +50,9 @@ LineItemSubmission.updateItem = function(e){
       }
     }).done(function(response){
       trace(response);
+
     }).fail(function(jqXHR, textStatus){
       trace(jqXHR, textStatus);
     });
+    Cart.updateTotalCartPrice();
 };
