@@ -21,7 +21,6 @@ LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
     data: {
       line_item: {
         product_id: product_id,
-        ...
       }
     }
   });
