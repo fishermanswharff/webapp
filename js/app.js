@@ -95,6 +95,22 @@ Backbone.history.start();
 
 $(document).ready(function(){
   Cookie.getCookie("cart_id") == "null" ? Cookie.getCartId() : trace(Cookie.getCookie("cart_id"));
+
+  $.ajax({
+    url: 'http://localhost:3000/line_items',
+    type: 'POST',
+    data: {
+      line_item: {
+        product_id: 1,
+        quantity: 1,
+        cart_id: 1
+      }
+    },
+  }).done(function(response){
+    trace(response);
+  }).fail(function(jqXHR, textStatus, errorThrown){
+    trace(jqXHR, textStatus, errorThrown);
+  });
 });
 
 
