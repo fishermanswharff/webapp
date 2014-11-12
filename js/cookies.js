@@ -11,7 +11,7 @@ Cookie.setItem = function(key, value){
 Cookie.getCookie = function(key){
   var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
   return keyValue ? keyValue[2] : null;
-}
+};
 
 Cookie.getCartId = function(){
   var cartId;
@@ -26,5 +26,5 @@ Cookie.getCartId = function(){
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
   });
-}
-  
+};
+

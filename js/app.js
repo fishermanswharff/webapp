@@ -29,7 +29,7 @@ var Router = Backbone.Router.extend({
     $("#line-items").on("submit","form.update-line-item", function(e){
       LineItemSubmission.updateItem(e);
     });
-    
+
     $("#clear-cart").on("submit",function(e){
       Cart.clearCart(e,router);
     });
@@ -59,13 +59,13 @@ var getLineItems = function(object){
     }).fail(function(jqXHR, textStatus, errorThrown){
       trace(jqXHR, textStatus, errorThrown);
     });
-    
+
   });
 };
 
 $(document).ready(function(){
-  if ((Cookie.getCookie("cart_id") == "null") || (Cookie.getCookie("cart_id") == undefined)) {
-    Cookie.getCartId()
+  if ((Cookie.getCookie("cart_id") === "null") || (Cookie.getCookie("cart_id") === undefined) || (Cookie.getCookie("cart_id") === null)) {
+    Cookie.getCartId();
   } else {
     var id = Cookie.getCookie("cart_id");
     $.ajax({
@@ -73,7 +73,7 @@ $(document).ready(function(){
       type: 'GET',
     })
     .done(function(response) {
-      getLineItems(response)
+      getLineItems(response);
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace(jqXHR, textStatus, errorThrown);
@@ -81,7 +81,11 @@ $(document).ready(function(){
     .always(function() {
       // trace("complete");
     });
+
   }
+  $("#price_total").on("click",function(event){
+    Cart.updateTotalCartPrice();
+  });
   $("#updateCart").on("click",function(event){
     Cart.updateCart();
   });
