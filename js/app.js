@@ -25,6 +25,9 @@ var Router = Backbone.Router.extend({
       trace(jqXHR, textStatus, errorThrown);
     });
 
+    $("#line-items").on("submit","form.update-line-item", function(e){
+      LineItemSubmission.updateItem(e);
+    });
     
     $("#clear-cart").on("submit",function(e){
       Cart.clearCart(e,router);
@@ -47,6 +50,7 @@ var getLineItems = function(object){
       url: 'http://localhost:3000/line_items/'+item.id,
       type: 'GET',
     }).done(function(response){
+      // trace(response);
       var template = Handlebars.compile($("#lineItemTemplate").html());
       $("#line-items").append(template({
         item: response
@@ -68,7 +72,6 @@ $(document).ready(function(){
       type: 'GET',
     })
     .done(function(response) {
-      // trace(response);
       getLineItems(response)
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
@@ -78,6 +81,9 @@ $(document).ready(function(){
       // trace("complete");
     });
   }
+  $("#updateCart").on("click",function(event){
+    Cart.updateCart();
+  });
 });
 
 

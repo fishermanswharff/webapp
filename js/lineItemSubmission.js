@@ -32,3 +32,26 @@ LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
     trace(jqXHR, textStatus, errorThrown);
   });
 };
+
+LineItemSubmission.updateItem = function(e){
+  if(e.preventDefault) e.preventDefault();
+  var id = $(e.currentTarget).find("input").attr("id");
+  var quantity = $(e.currentTarget).siblings("p").find("input[type='number']").val();
+  debugger;
+  $.ajax({
+      url: 'http://localhost:3000/line_items/'+id,
+      type: 'PATCH',
+      data: {
+        line_item: {
+          quantity: quantity
+        }
+      },
+      success: function (data) {
+        trace(data);
+      }
+    }).done(function(response){
+      trace(response);
+    }).fail(function(jqXHR, textStatus){
+      trace(jqXHR, textStatus);
+    });
+};

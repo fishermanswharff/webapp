@@ -27,4 +27,4 @@ Cookie.getCartId = function(){
     trace(jqXHR, textStatus, errorThrown);
   });
 }
-
+  
