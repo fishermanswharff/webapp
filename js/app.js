@@ -8,11 +8,12 @@ var Router = Backbone.Router.extend({
   },
 
   menu: function(){
-    $.ajax({ url: 'http://localhost:3000/categories', type: 'GET',})
+    $.ajax({ url: 'http://localhost:3000/products', type: 'GET',})
     .done(function(response){
+      trace(response);
       var template = Handlebars.compile($("#mainTemplate").html());
       $("#bobs-bagels-menu").html(template({
-        menu: response
+        products: response
       }));
       var $forms = $(".lineitem_submit");
       $forms.each(function(index,form){
