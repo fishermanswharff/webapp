@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 body {
+  padding-top: 50px;
   color: white;
   background: url("../images/bagels.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover; 
@@ -16,7 +17,7 @@ body {
 }
 
 .product {
-  /*height: 200px;*/
+  position: relative;
 }
 
 div.product p span {
@@ -24,6 +25,12 @@ div.product p span {
   display: block;
 }
 
+div.product span.product-price {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-size: 24px;
+}
 
 .product img {
   width: 200px;
@@ -53,6 +60,12 @@ div.product p span {
 nav.navbar {
   margin-bottom: 0px;
   background: #000;
+  background: rgba(0,0,0,0.8);
+}
+a.navbar-brand { color: white; }
+a.navbar-brand:hover { font-weight: bold; }
+nav.navbar ul li a {
+  color: white;
 }
 
 /* HEADER */
@@ -114,8 +127,7 @@ h2 { font-family: 'Pacifico', cursive; }
   position: fixed;
   overflow-y: scroll;
   height: 100%;
-  padding-bottom: 50px;
-  top: 20px;
+  top: 60px;
   right: 2%;
   width: 46%;
 }
