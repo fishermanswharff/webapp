@@ -1,14 +1,27 @@
-<form id="order-form" action="" method="post">
-  <div><label>Name: </label><input name="name"></div>
-  <div><label>Address: </label><input name="address"></div>
-  <div><label>Email: </label><input name="Email"></div>
-      <select id="payment_method">
-        <option>Credit Card</option>
-        <option>Cash</option>
-        <option>Schrute Bucks</option>
-      </select>
-  <input type="checkbox" name="delivery"> Delivery?
-  <input type="hidden" name="cartId" id="cartId" value="{{cartId}}">
+<form id="order-form" role="form">
+  <div class="form-group">
+    <label for="name">Name: </label>
+    <input class="form-control" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="address">Address: </label>
+    <input class="form-control" id="address" name="address">
+  </div>
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input class="form-control" id="email" name="Email">
+  </div>
+  <div class="form-group">
+    <select id="payment_method">
+      <option>Credit Card</option>
+      <option>Cash</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>
+      <input type="checkbox" name="delivery"> Delivery?
+    </label>
+  </div>
 
   <script>
 
@@ -33,7 +46,10 @@
     });
   </script>
 
+  <div class="form-group">
+    <input type="submit" id="checkoutSubmit" value="Place Order">    
+  </div>
 
-  <input type="submit" id="checkoutSubmit" value="Place Order">
+  
   
 </form>

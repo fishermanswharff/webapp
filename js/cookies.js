@@ -16,7 +16,7 @@ Cookie.getCookie = function(key){
 Cookie.getCartId = function(){
   var cartId;
   $.ajax({
-    url: 'https://bobsapi.herokuapp.com/carts',
+    url: 'http://localhost:3000/carts',
     type: 'POST',
     data: { cart:{} }
   }).done(function(response){
