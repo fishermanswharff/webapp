@@ -3,8 +3,8 @@
   // ————————————————————————————————————————————————————
   
   $.ajax({
-    //url: 'http://localhost:3000/carts',
-    //url: 'http://localhost:3000/carts',
+    //url: 'https://bobsapi.herokuapp.com/carts',
+    //url: 'https://bobsapi.herokuapp.com/carts',
     type: 'POST',
     data: { cart:{} }
   }).done(function(response){
@@ -18,7 +18,7 @@
   // ————————————————————————————————————————————————————
   
   $.ajax({
-    url: 'http://localhost:3000/orders',
+    url: 'https://bobsapi.herokuapp.com/orders',
     type: 'POST',
     data: {
       order: {
@@ -41,7 +41,7 @@
   // post to a new line_item
   
   $.ajax({
-    url: 'http://localhost:3000/line_items',
+    url: 'https://bobsapi.herokuapp.com/line_items',
     type: 'POST',
     data: {
       line_item: {
@@ -60,7 +60,7 @@
   // POST options for a line_item.
   
   $.ajax({
-    url: 'http://localhost:3000/options',
+    url: 'https://bobsapi.herokuapp.com/options',
     type: 'POST',
     data: {
       option: {
@@ -92,7 +92,7 @@
   // so the user can 
   
   $.ajax({
-    url: 'http://localhost:3000/carts',
+    url: 'https://bobsapi.herokuapp.com/carts',
     type: 'POST',
     success: function(data,textStatus,jqXHR){
       // trace(data,textStatus, jqXHR, "successful post request!");
@@ -113,7 +113,7 @@
   // get all line_items
   
   $.ajax({
-    url: 'http://localhost:3000/line_items',
+    url: 'https://bobsapi.herokuapp.com/line_items',
     type: 'GET',
     complete: function(jqXHR,textStatus){
       trace(jqXHR, textStatus, "complete get!!");
@@ -137,8 +137,8 @@
   // GET all the carts -> admin only
   
   $.ajax({
-    // url: 'http://localhost:3000/carts',
-    url: 'http://localhost:3000/carts',
+    // url: 'https://bobsapi.herokuapp.com/carts',
+    url: 'https://bobsapi.herokuapp.com/carts',
     type: 'GET',
     complete: function(jqXHR,textStatus){
       trace(jqXHR, textStatus, "complete get!!");
@@ -160,7 +160,7 @@
   // ————————————————————————————————————————————————————
   
   $.ajax({
-    url: 'http://localhost:3000/products',
+    url: 'https://bobsapi.herokuapp.com/products',
     type: 'GET',
     complete: function(jqXHR,textStatus){
       trace(jqXHR, textStatus, "complete get!!");

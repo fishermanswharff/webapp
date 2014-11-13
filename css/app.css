@@ -3,21 +3,29 @@
   box-sizing: border-box;
 }
 body {
-  padding-top: 50px;
+  margin-top: 50px;
   color: white;
   background: url("../images/bagels.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  /*padding-top: 50px;*/
 }
 
+/*    MAIN MENU   */
+/*——————————————————————————————————————*/
 .bobs-bagels-menu {
   background: rgba(0,0,0,0.5);
 }
 
 .product {
   position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.options .option {
+  display: inline-block;
+  margin: 5px 10px;
 }
 
 div.product p span {
@@ -40,20 +48,10 @@ div.product span.product-price {
   margin-bottom: 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+form.lineitem_submit div {
+  display: inline-block;
+  margin: 10px 10px;
+}
 
 /* NAVBAR */
 /*——————————————————————————————————————*/
@@ -62,63 +60,18 @@ nav.navbar {
   background: #000;
   background: rgba(0,0,0,0.8);
 }
-a.navbar-brand { color: white; }
-a.navbar-brand:hover { font-weight: bold; }
+a.navbar-brand { 
+  color: white; 
+  font-weight: normal;
+  -webkit-transition: all 0.5s ease 0;
+  transition: all 0.5s ease 0;
+}
+
+a.navbar-brand:hover { 
+  font-weight: bold;
+}
 nav.navbar ul li a {
   color: white;
-}
-
-/* HEADER */
-/*——————————————————————————————————————*/
-.header {
-  height: 160px;
-  background-image: url("http://www.eggnerd.com/wp-content/uploads/2013/09/beez10.jpg");
-  font-family: 'Pacifico', cursive;
-}
-.header h1{ font-size: 70px; }
-
-
-/* PRODUCTS Listing */
-/*——————————————————————————————————————*/
-
-.menu_item {
-  border-bottom: 1px solid #EBDCC4;
-  background: rgb(254,255,255); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(254,255,255,1) 82%, rgba(255,251,244,1) 99%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(82%,rgba(254,255,255,1)), color-stop(99%,rgba(255,251,244,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(254,255,255,1) 82%,rgba(255,251,244,1) 99%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(254,255,255,1) 82%,rgba(255,251,244,1) 99%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(254,255,255,1) 82%,rgba(255,251,244,1) 99%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(254,255,255,1) 82%,rgba(255,251,244,1) 99%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#fffbf4',GradientType=0 ); /* IE6-9 */
-}
-
-div.menu-image{
-  width: 200px;
-  height: 100px;
-}
-
-.menu_item img {
-  width: 100%;
-  height: auto;
-  margin-right: 10px;
-  margin-top: 0;
-}
-
-.group-auto-align { line-height:0; }
-
-h2 { font-family: 'Pacifico', cursive; }
-
-.btn.btn-warning.category {
-  border-radius: 0;
-  text-align: center;
-}
-
-.btn.btn-warning.category a{
-  color: black;
-  text-decoration: none;
-  font-family: 'Pacifico', cursive;
-  font-size: 150%;
 }
 
 /* CART */
@@ -131,6 +84,25 @@ h2 { font-family: 'Pacifico', cursive; }
   right: 2%;
   width: 46%;
   padding-bottom: 100px;
+}
+div.line-items,
+div.line-item {
+  clear: both;
+}
+div.line-item div.item-info,
+div.line-item form.update-line-item {
+  float: left;
+  width: 50%;
+}
+
+div.line-item p.line-item-description, 
+div.line-item p.line-item-price {
+  display: inline-block;
+}
+
+span.price {
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 input[type="number"] {
@@ -146,6 +118,9 @@ input[type="number"] {
   outline-width: 5px;
   outline-color: white;
 }
+input[type="number"].line-item-quantity {
+  margin-right: 10px;
+}
 
 .shopping-cart h4{
   text-align: center;
@@ -155,5 +130,16 @@ input[type="number"] {
   margin-bottom: 30px;
 }
 
-
-
+form#clear-cart {
+  clear: both;
+  padding-top: 20px;
+  border-top: 1px solid white;
+}
+a#price_total_trigger {
+  visibility: hidden;
+}
+p#price_total {
+  font-weight: bold;
+  font-size: 2.5em;
+  float: right;
+}

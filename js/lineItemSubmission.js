@@ -12,7 +12,7 @@ LineItemSubmission.processForm = function(e,form,router){
 LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
   trace(product_id, quantity, cart_id);
   $.ajax({
-    url: 'http://localhost:3000/line_items',
+    url: 'https://bobsapi.herokuapp.com/line_items',
     type: 'POST',
     data: {
       line_item: {
@@ -20,14 +20,15 @@ LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
         quantity: quantity,
         cart_id: cart_id
       }
+    },
+    complete: function(){
+      Cart.updateTotalCartPrice();
     }
   }).done(function(response){
-    trace(response);
     var template = Handlebars.compile($("#lineItemTemplate").html());
     $("#line-items").append(template({
       item: response
     }));
-
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
   });
@@ -38,7 +39,7 @@ LineItemSubmission.updateItem = function(e){
   var id = $(e.currentTarget).find("input").attr("id");
   var quantity = $(e.currentTarget).siblings("p").find("input[type='number']").val();
   $.ajax({
-      url: 'http://localhost:3000/line_items/'+id,
+      url: 'https://bobsapi.herokuapp.com/line_items/'+id,
       type: 'PATCH',
       data: {
         line_item: {

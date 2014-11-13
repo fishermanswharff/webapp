@@ -8,7 +8,7 @@ var Router = Backbone.Router.extend({
   },
 
   menu: function(){
-    $.ajax({ url: 'http://localhost:3000/products', type: 'GET',})
+    $.ajax({ url: 'https://bobsapi.herokuapp.com/products', type: 'GET',})
     .done(function(response){
       trace(response);
       var template = Handlebars.compile($("#mainTemplate").html());
@@ -48,8 +48,11 @@ Backbone.history.start();
 var getLineItems = function(object){
   $(object.line_items).each(function(index,item){
     $.ajax({
-      url: 'http://localhost:3000/line_items/'+item.id,
+      url: 'https://bobsapi.herokuapp.com/line_items/'+item.id,
       type: 'GET',
+      complete: function(){
+        $("#price_total_trigger").trigger("click");
+      },
     }).done(function(response){
       // trace(response);
       var template = Handlebars.compile($("#lineItemTemplate").html());
@@ -69,7 +72,7 @@ $(document).ready(function(){
   } else {
     var id = Cookie.getCookie("cart_id");
     $.ajax({
-      url: "http://localhost:3000/carts/"+id,
+      url: "https://bobsapi.herokuapp.com/carts/"+id,
       type: 'GET',
     })
     .done(function(response) {
@@ -83,7 +86,7 @@ $(document).ready(function(){
     });
 
   }
-  $("#price_total").on("click",function(event){
+  $("#price_total_trigger").on("click",function(event){
     Cart.updateTotalCartPrice();
   });
   $("#updateCart").on("click",function(event){

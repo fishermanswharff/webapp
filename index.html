@@ -23,11 +23,6 @@
         <a class="navbar-brand" href="#">Bob's Bagels</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="#Sandwiches-section">Sandwiches</a></li>
-          <li><a href="#Catering-section">Catering</a></li>
-          <li><a href="#Beverages-section">Beverages</a></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#/about">About Bob</a></li>
           <li class="dropdown">
@@ -59,8 +54,8 @@
         <form id="clear-cart">
           <input class="btn btn-default" type="submit" name="empty-cart" value="Empty Cart">
           <a class="btn btn-default" href="#/checkout">Checkout</a>
-          <a class="btn btn-info" id="price_total"></a>
-
+          <p id="price_total" class="lead"></p>
+          <a id="price_total_trigger"></a>
         </form>
 
       </div>
@@ -91,35 +86,11 @@
   <script src="js/cartSubmission.js"></script>
   <script src="js/app.js" type="text/javascript"></script>
 
-  <!-- Page root template -->
-  <script type="text/x-handlebars-template" id="menuTemplate">
-    {{#each menu.products}}
-      <div class="menu_item">
-        <div class="menu-image pull-left">
-          <img src="{{image_url}}">
-        </div>
-        <div class="group-auto-align">
-        <h2>{{title}}</h2>
-        <p>{{description}}</p>
-        <h3>{{price}}</h3>
-        </div>
-
-        <form class="lineitem_submit">
-          <div class="form-group">
-            <input id="{{id}}" type="submit" name="Add to Cart" >
-            <input type="hidden" value="{{id}}" >
-            <input type="number" value="1">
-          </div>
-        </form>
-      </div>
-    {{/each}}
-  </script>
-
 
   <!-- menu page -->
   <script type="text/x-handlebars-template" id="mainTemplate">
     {{#each products}}
-      <section id="{{title}}-section" class="product-section">
+      <section id="{{id}}-section" class="product-section">
         <div class="product row">
           <img src="{{image_url}}" />
           <h2>{{title}}</h2>
@@ -129,9 +100,11 @@
           </p>
           <div class="options">
             {{#each options}}
-            <label>
-              <input type="checkbox">{{items}}
-            </label>
+            <div class="option">
+              <label>
+                <input type="checkbox" checked="checked" value="1">{{items}}
+              </label>  
+            </div>
             {{/each}}
           </div>
           <form class="lineitem_submit">
@@ -151,11 +124,16 @@
   <!-- line item template -->
   <script type="text/x-handlebars-template" id="lineItemTemplate">
     <div id="{{item.id}}-container" class="line-item">
-      <h3>{{item.product.title}}</h3>
-      <p>Quantity: <input type="number" value="{{item.quantity}}" class="line-item-quantity"></p>
-      <p>{{item.product.description}}</p>
-      <p class="price">{{item.product.price}}</p>
+      <div class="item-info">
+        <h3>{{item.product.title}}</h3>
+        <p class="lineitem-price lead"></p>
+        <p class="lineitem-description lead"><span class="price">{{item.product.price}}</span> | {{item.product.description}}</p>  
+      </div>
+      
       <form class="update-line-item">
+        <label>Quantity: 
+          <input type="number" value="{{item.quantity}}" class="line-item-quantity">
+        </label>
         <input class="btn btn-default" type="submit" id="{{item.id}}" value="Update Item" >
       </form>
       <hr>
