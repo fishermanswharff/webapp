@@ -9,6 +9,7 @@ Cart.clearCart = function(e,router){
   }).done(function(response){
     $("#line-items").html("");
     $("#price_total").html("");
+    window.location = "/";
     router.navigate('', {trigger: true});
   }).fail(function(jqXHR, textStatus, errorThrown){
     trace(jqXHR, textStatus, errorThrown);
@@ -25,7 +26,7 @@ Cart.totalCart = function() {
 // This is the one you want attached to that click event
 Cart.updateTotalCartPrice = function() {
   var cartTotal = Cart.totalCart();
-  $('#price_total').html("Price - " + cartTotal);
+  $('#price_total').html("Total Price: " + cartTotal);
   trace(cartTotal);
 };
 

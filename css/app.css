@@ -89,6 +89,7 @@ div.line-items,
 div.line-item {
   clear: both;
 }
+
 div.line-item div.item-info,
 div.line-item form.update-line-item {
   float: left;
@@ -140,6 +141,6 @@ a#price_total_trigger {
 }
 p#price_total {
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2em;
   float: right;
 }

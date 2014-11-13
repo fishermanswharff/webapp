@@ -36,8 +36,8 @@ LineItemSubmission.postLineItem = function(product_id, quantity, cart_id){
 
 LineItemSubmission.updateItem = function(e){
   if(e.preventDefault) e.preventDefault();
-  var id = $(e.currentTarget).find("input").attr("id");
-  var quantity = $(e.currentTarget).siblings("p").find("input[type='number']").val();
+  var id = $(e.currentTarget).find("input[type='submit']").attr("id");
+  var quantity = $(e.currentTarget).find("input[type='number']").val();
   $.ajax({
       url: 'https://bobsapi.herokuapp.com/line_items/'+id,
       type: 'PATCH',
